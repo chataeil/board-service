@@ -1,4 +1,4 @@
-package org.anonymous.boardservice;
+package org.anonymous;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
