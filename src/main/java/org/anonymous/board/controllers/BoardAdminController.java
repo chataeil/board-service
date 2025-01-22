@@ -1,7 +1,12 @@
 package org.anonymous.board.controllers;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.anonymous.board.validators.BoardConfigValidator;
+import org.anonymous.global.exceptions.BadRequestException;
+import org.anonymous.global.libs.Utils;
 import org.anonymous.global.rests.JSONData;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +16,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardAdminController {
 
+    private final Utils utils;
+    private final BoardConfigValidator configValidator;
 
     /**
      * 게시판 설정 등록, 수정 처리
@@ -18,11 +25,16 @@ public class BoardAdminController {
      * @return
      */
     @PostMapping("/config")
-    public JSONData save(){
+    public JSONData save(@Valid @RequestBody RequestConfig form, Errors errors) {
+
+        configValidator.validate(form, errors);
+
+        if (errors.hasErrors()) {
+            throw new BadRequestException(utils.getErrorMessages(errors));
+        }
 
         return null;
     }
-
 
     /**
      * 게시판 설정 목록
@@ -30,18 +42,18 @@ public class BoardAdminController {
      * @return
      */
     @GetMapping("/config")
-    public JSONData list(){
+    public JSONData list(@ModelAttribute BoardConfigSearch search) {
 
         return null;
     }
 
     /**
-     * 게시판  한개 또는 여러개 일괄 수정
+     * 게시판 한개 또는 여러개 일괄 수정
      *
      * @return
      */
     @PatchMapping("/config")
-    public JSONData update(){
+    public JSONData update(@RequestBody List<RequestConfig> form) {
 
         return null;
     }
@@ -49,11 +61,11 @@ public class BoardAdminController {
     /**
      * 게시판 한개 또는 여러개 삭제 처리
      *
-     * @param bid
+     * @param bids
      * @return
      */
-    @DeleteMapping
-    public JSONData delete(@RequestParam("bid")List<String> bid){
+    @DeleteMapping("/config")
+    public JSONData delete(@RequestParam("bid") List<String> bids) {
 
         return null;
     }

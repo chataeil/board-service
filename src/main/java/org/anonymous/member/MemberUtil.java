@@ -1,6 +1,6 @@
 package org.anonymous.member;
 
-import org.koreait.member.contants.Authority;
+import org.anonymous.member.contants.Authority;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;

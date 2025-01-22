@@ -1,9 +1,9 @@
 package org.anonymous.global.advices;
 
 import lombok.RequiredArgsConstructor;
-import org.koreait.global.exceptions.CommonException;
-import org.koreait.global.libs.Utils;
-import org.koreait.global.rests.JSONData;
+import org.anonymous.global.exceptions.CommonException;
+import org.anonymous.global.libs.Utils;
+import org.anonymous.global.rests.JSONData;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
